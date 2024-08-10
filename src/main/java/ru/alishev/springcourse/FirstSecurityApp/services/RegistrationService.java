@@ -24,8 +24,17 @@ public class RegistrationService {
 
     @Transactional
     public void register(Person person) {
+        if (peopleRepository.findByEmail(person.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("Пользователь с таким email уже существует");
+        }
         person.setPassword(passwordEncoder.encode(person.getPassword()));
         person.setRole("ROLE_USER");
         peopleRepository.save(person);
     }
+
+    public Person getUserByEmail(String email) {
+        return peopleRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
 }

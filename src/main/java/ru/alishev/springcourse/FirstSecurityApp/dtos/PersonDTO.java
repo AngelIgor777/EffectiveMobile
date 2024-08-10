@@ -2,45 +2,35 @@ package ru.alishev.springcourse.FirstSecurityApp.dtos;
 
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class PersonDTO {
 
-public class PersonDTO {
+        @NotEmpty(message = "Имя не должно быть пустым")
+        @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
+        private String username;
 
-    @NotEmpty(message = "Имя не должно быть пустым")
-    @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
-    private String username;
+        @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
+        private int yearOfBirth;
 
-    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
-    private int yearOfBirth;
+        private String password;
 
-    private String password;
+        @NotEmpty(message = "Роль не должна быть пустой")
+        private String role;
 
-    public @NotEmpty(message = "Имя не должно быть пустым") @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной") String getUsername() {
-        return username;
+        @NotEmpty(message = "Email не должен быть пустым")
+        @Email(message = "Email должен быть корректным")
+        private String email;
+
     }
-
-    public void setUsername(@NotEmpty(message = "Имя не должно быть пустым") @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной") String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
-    public int getYearOfBirth() {
-        return yearOfBirth;
-    }
-
-    public void setYearOfBirth(@Min(value = 1900, message = "Год рождения должен быть больше, чем 1900") int yearOfBirth) {
-        this.yearOfBirth = yearOfBirth;
-    }
-}
