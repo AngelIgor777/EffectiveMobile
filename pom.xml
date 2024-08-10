@@ -8,7 +8,7 @@
 		<version>2.5.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ru.alishev.springcourse</groupId>
+	<groupId>ru.FirstSecurityApp</groupId>
 	<artifactId>SpringSecurityApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>FirstSecurityApp</name>
