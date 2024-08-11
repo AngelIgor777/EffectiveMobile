@@ -1,5 +1,8 @@
 package ru.FirstSecurityApp.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -19,10 +22,19 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/tasks")
 @RequiredArgsConstructor
+@Tag(name = "Tasks", description = "Operations related to tasks")
 public class TaskController {
 
     private final TaskService taskService;
     private final PeopleRepository peopleRepository;
+
+
+    @GetMapping
+    @Operation(summary = "Get all tasks", description = "Retrieve a list of all tasks")
+    @ApiResponse(responseCode = "200", description = "Successful operation")
+    public ResponseEntity<List<TaskDTO>> getAllTasks() {
+        return ResponseEntity.ok(taskService.getAllTasks());
+    }
 
     @PostMapping
     public ResponseEntity<TaskDTO> createTask(@RequestBody Task task) {
@@ -84,11 +96,6 @@ public class TaskController {
         return ResponseEntity.ok(updatedTask);
     }
 
-
-    @GetMapping
-    public ResponseEntity<List<TaskDTO>> getAllTasks() {
-        return ResponseEntity.ok(taskService.getAllTasks());
-    }
 
     @GetMapping("/executor/{executorId}")
     public ResponseEntity<Page<TaskDTO>> getTasksByExecutor(

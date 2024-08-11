@@ -20,7 +20,6 @@ public class CommentController {
     @PostMapping("/tasks/{taskId}")
     public ResponseEntity<CommentDTO> addComment(@PathVariable Long taskId, @RequestBody Comment comment) {
         Comment saveComment = commentService.addComment(taskId, comment);
-        System.out.println(comment.getAuthor().getUsername());
         return ResponseEntity.ok(commentService.commentConvertToCommentDto(saveComment));
     }
 
