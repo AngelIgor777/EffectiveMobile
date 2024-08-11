@@ -1,4 +1,4 @@
-Spring Security App - Docker Development Environment
+Spring Security App - Docker Development Environment.
 Этот проект представляет собой Spring Boot приложение с использованием PostgreSQL в качестве базы данных. В этом README описаны шаги для настройки и запуска dev среды с использованием Docker и Docker Compose.
 
 Требования:
