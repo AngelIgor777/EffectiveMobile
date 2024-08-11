@@ -9,16 +9,17 @@ Docker Compose установлен.
 
 Запускаем командную строку и вводим:
 
-git clone ссылка на этот репозиторий
-cd полная ссылка на файл который скачался
+git clone https://github.com/AngelIgor777/EffectiveMobile.git и после того как всё скачалось вводим :
+cd C:\Users\user\IdeaProjects\Effective-Mobile-Test - у вас может отличаться, поэтому копируем путь до проекта и меняем.
 
 Далее вводим:
 
-docker-compose up --build
-
+docker-compose up --build 
+и
 ждём пока jar собёрется, а после этого вводим: 
 
-docker compose up -d
+docker compose up -d  
 
+и теперь
 Готово!
 Теперь можешь перейти по ссылке :  http://localhost:8080/swagger-ui/index.html и посмотреть функции сервиса.
